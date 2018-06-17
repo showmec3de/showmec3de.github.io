@@ -1,0 +1,1 @@
+这是修改好的源文件，如有自行开发的需要，拷贝auth.c、plugin.c至openwrt项目的pppd目录、rp-pppoe目录，替换掉原有文件，然后编译。

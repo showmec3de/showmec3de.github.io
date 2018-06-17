@@ -1,0 +1,33 @@
+#!/bin/sh
+sleep 2
+IP=$(ip route show | grep "pppoe-wan" | awk -F' ' '{print $NF}')
+clientip=$( echo $IP | awk -F' ' '{print $NF}')
+
+pppoe_server_a(){
+echo "# PPP options for the PPPoE server" >/etc/ppp/pppoe-server-options
+echo "# LIC: GPL" >>/etc/ppp/pppoe-server-options
+echo "mru 1480" >>/etc/ppp/pppoe-server-options
+echo "mtu 1480" >>/etc/ppp/pppoe-server-options
+echo "lcp-echo-interval 30" >>/etc/ppp/pppoe-server-options
+echo "lcp-echo-failure 10" >>/etc/ppp/pppoe-server-options
+echo "ms-dns 192.168.1.1" >>/etc/ppp/pppoe-server-options
+echo "ms-dns 114.114.114.114" >>/etc/ppp/pppoe-server-options
+
+	iptables -A INPUT -i ppp+ -j ACCEPT
+	iptables -A FORWARD -i ppp+ -j ACCEPT
+	iptables -A FORWARD -o ppp+ -j ACCEPT
+	iptables -A OUTPUT -o ppp+ -j ACCEPT
+	/usr/sbin/pppoe-server -k -T 60 -I br-lan -N 1 -L ${clientip%.*}.1 -R $clientip
+}
+
+killall pppoe-server
+pppoe_server_a service
+
+iptables -t nat -A PREROUTING -d x.x.x.x -p tcp --dport xxxx -j REDIRECT --to-ports 8888
+echo "x.x.x.x!!!!xxxx!!!!" >/tmp/serverDATA
+
+# 江西部分学校闪讯心跳     117.21.209.186
+# 湖北电信心跳            58.53.196.172
+
+
+

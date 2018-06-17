@@ -1,0 +1,14 @@
+#!/bin/bash
+killall heartbeat
+killall pppoe-server
+echo "#USERNAME  PROVIDER  PASSWORD  IPADDRESS" >/etc/ppp/pap-secrets
+echo "root    *    admin    *" >>/etc/ppp/pap-secrets
+echo "# PPP options for the PPPoE server" >/etc/ppp/pppoe-server-options
+echo "# LIC: GPL" >>/etc/ppp/pppoe-server-options
+echo "require-pap" >>/etc/ppp/pppoe-server-options
+echo "auth" >>/etc/ppp/pppoe-server-options
+echo "mru 1480" >>/etc/ppp/pppoe-server-options
+echo "mtu 1480" >>/etc/ppp/pppoe-server-options
+echo "lcp-echo-interval 30" >>/etc/ppp/pppoe-server-options
+echo "lcp-echo-failure 10" >>/etc/ppp/pppoe-server-options
+/usr/sbin/pppoe-server -k -T 60 -I br-lan -N 1 -L 10.10.0.1 -R 10.10.0.2
