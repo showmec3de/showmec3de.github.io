@@ -29,10 +29,10 @@
 
 	此固件基于潘多拉官方固件修改而成，路由器直接刷入即可。
 
-
-	[固件下载](https://github.com/showmec3de/showmec3de.github.io/raw/master/firmware/PandoraBox-ralink-mt7620-mt7620a-evb)
 	
-	将固件刷入支持OpenWrt路由器中，等一会，然后上传固件。
+[固件下载](https://github.com/showmec3de/showmec3de.github.io/raw/master/firmware/PandoraBox-ralink-mt7620-mt7620a-evb)
+	
+	将固件刷入支持OpenWrt路由器中
 
 	本固件未做各种型号路由的指示灯和复位按钮适配，可能存在指示灯显示异常，复位按钮无法使用的情况。其他功能均可正常使用。
 
@@ -40,7 +40,8 @@
 
 	打开/etc/rc.button文件夹内pppoe_noauth，修改两处x.x.x.x为心跳服务器的IP，修改两处xxxx为心跳服务器端口，重启路由。
 
-	[WinScp下载地址](https://winscp.net/eng/download.php)
+[WinScp下载地址](https://winscp.net/eng/download.php)
+
 
 五、需要帮助
 
