@@ -30,7 +30,7 @@
 	此固件基于潘多拉官方固件修改而成，路由器直接刷入即可。
 
 	
-[固件下载](https://github.com/showmec3de/showmec3de.github.io/raw/master/firmware/PandoraBox-ralink-mt7620-mt7620a-evb)
+[固件下载](https://github.com/showmec3de/showmec3de.github.io/raw/master/firmware/PandoraBox-ralink-mt7620-mt7620a-evb.bin)
 	
 	将固件刷入支持OpenWrt路由器中
 
